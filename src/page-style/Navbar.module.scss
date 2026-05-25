@@ -1,0 +1,130 @@
+.desktopNav {
+  width: 100%;
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; 
+  
+  img {
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+    transition: transform 0.2s;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.navLinksWrapper {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center; 
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a1a1aa;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.caret {
+  transition: transform 0.3s ease;
+  opacity: 0.5;
+}
+
+.caretRotated {
+  transform: rotate(180deg);
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 240px;
+  background: #141417;
+  border: 1px solid #27272a;
+  border-radius: 10px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dropdownVisible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdownLink {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #a1a1aa;
+  text-decoration: none;
+  border-radius: 6px;
+  display: block;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLinksWrapper {
+    justify-content: flex-end;
+  }
+  .dropdown {
+    display: none; 
+  }
+}
