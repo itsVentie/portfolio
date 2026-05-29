@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@styles/Footer.module.scss";
-import logoImg from "@assets/logo.jpg";
+import logoImg from "@assets/logo.png";
 import github from "@assets/svg/github.svg";
 import telegram from "@assets/svg/telegram.svg";
 import linkedin from "@assets/svg/linkedin.svg";

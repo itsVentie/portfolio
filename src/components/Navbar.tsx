@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CaretDown } from "@phosphor-icons/react";
 import styles from "@styles/Navbar.module.scss";
-import logoImg from "@assets/logo.jpg";
+import logoImg from "@assets/logo.png";
 
 interface NavSubItem {
   href: string;
