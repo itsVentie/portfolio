@@ -1,0 +1,120 @@
+$bg-main: #09090b;
+$bg-card: #121214;
+$border-color: #222226;
+$text-primary: #f4f4f5;
+$text-secondary: #d4d4d8;
+$text-muted: #71717a;
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+.pageWrapper {
+    background-color: $bg-main;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+.heroSection {
+    padding: 140px 0 120px 0;
+}
+
+.headerArea {
+    max-width: 700px;
+    margin-bottom: 60px;
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: $text-secondary;
+        margin: 16px 0 0 0;
+    }
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $text-primary;
+
+    h1 {
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: -0.03em;
+    }
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.accredCard {
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: $transition-base;
+
+    &:hover {
+        border-color: #333339;
+    }
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accredTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+}
+
+.accredOrg {
+    font-size: 14px;
+    color: $text-muted;
+    font-weight: 500;
+}
+
+.emptyState {
+    margin-top: 80px;
+    padding: 80px 40px;
+    border: 1px dashed $border-color;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $text-muted;
+    text-align: center;
+    gap: 20px;
+
+    svg {
+        opacity: 0.4;
+    }
+
+    h3 {
+        margin: 0;
+        color: $text-primary;
+        font-size: 18px;
+    }
+
+    p {
+        max-width: 400px;
+        font-size: 14px;
+        margin: 0;
+    }
+}

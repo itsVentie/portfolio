@@ -1,0 +1,504 @@
+$bg-main: #09090b;
+$bg-secondary: #0d0d11;
+$bg-card: #121214;
+$bg-card-hover: #18181d;
+$bg-input: #161619;
+
+$border-color: #222226;
+$border-light: rgba(255, 255, 255, 0.04);
+$border-hover: rgba(139, 92, 246, 0.18);
+$border-focus: #6d4aff;
+
+$text-primary: #f4f4f5;
+$text-secondary: #d4d4d8;
+$text-muted: #71717a;
+
+$purple-main: #8b5cf6;
+$purple-soft: rgba(139, 92, 246, 0.08);
+$purple-medium: rgba(139, 92, 246, 0.14);
+$purple-glow: rgba(139, 92, 246, 0.3);
+
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+.pageWrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(139, 92, 246, 0.08) 0%,
+            transparent 32%
+        ),
+        linear-gradient(to bottom, #09090b, #08080a);
+    position: relative;
+    overflow-x: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.012) 1px,
+                transparent 1px
+            );
+        background-size: 72px 72px;
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5),
+            transparent 85%
+        );
+        pointer-events: none;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+        padding: 0 20px;
+    }
+}
+
+.heroSection {
+    padding: 140px 0 80px;
+
+    @media (max-width: 768px) {
+        padding: 100px 0 40px;
+    }
+}
+
+.heroContent {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 96px;
+
+    @media (max-width: 960px) {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        margin-bottom: 56px;
+    }
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @media (max-width: 540px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+}
+
+.avatarWrapper {
+    position: relative;
+    width: 144px;
+    height: 144px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: $transition-base;
+    outline: none;
+    isolation: isolate;
+
+    &:hover {
+        transform: translateY(-2px);
+
+        .avatarOverlay {
+            opacity: 1;
+        }
+
+        .avatarGlow {
+            opacity: 1;
+            transform: scale(1.15);
+        }
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        position: relative;
+        z-index: 2;
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .avatarGlow {
+        position: absolute;
+        inset: -16px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.28) 0%,
+            rgba(139, 92, 246, 0.06) 45%,
+            transparent 72%
+        );
+        opacity: 0.75;
+        transition: $transition-base;
+        z-index: 1;
+    }
+
+    .avatarOverlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(9, 9, 11, 0.68);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: 3;
+        transition: $transition-base;
+
+        span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+        }
+    }
+}
+
+.profileMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nameRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nicknameWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.nicknameBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    outline: none;
+
+    &:hover {
+        .nickname {
+            color: #ffffff;
+            text-shadow: 0 0 18px rgba(139, 92, 246, 0.18);
+        }
+
+        .caretIcon {
+            color: #c4b5fd;
+        }
+    }
+
+    .nickname {
+        font-size: 36px;
+        font-weight: 650;
+        color: $text-primary;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        transition: $transition-base;
+    }
+}
+
+.caretIcon {
+    color: $text-muted;
+    transition: $transition-base;
+    margin-top: 6px;
+}
+
+.caretIconOpen {
+    transform: rotate(180deg);
+}
+
+.akaDropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(20, 20, 24, 0.96),
+        rgba(12, 12, 16, 0.98)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    padding: 14px 16px;
+    min-width: 180px;
+    z-index: 10;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(139, 92, 246, 0.05);
+
+    animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.akaTitle {
+    font-family: $font-mono;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $text-muted;
+    margin-bottom: 8px;
+}
+
+.akaList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    li {
+        font-size: 14px;
+        color: $text-secondary;
+        font-weight: 500;
+        transition: $transition-base;
+
+        &:hover {
+            color: #ffffff;
+            transform: translateX(2px);
+        }
+    }
+}
+
+.locationBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-secondary;
+
+    backdrop-filter: blur(8px);
+
+    .flagIcon {
+        width: 16px;
+        height: auto;
+        border-radius: 2px;
+        display: block;
+    }
+}
+
+.specialtyTitle {
+    font-family: $font-mono;
+    font-size: 13px;
+    color: $text-muted;
+    letter-spacing: 0.02em;
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-secondary;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid rgba(255, 255, 255, 0.04);
+
+    padding: 8px 14px;
+    border-radius: 999px;
+
+    width: fit-content;
+
+    backdrop-filter: blur(8px);
+}
+
+.policySection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(18, 18, 20, 0.96),
+        rgba(12, 12, 14, 0.96)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 32px;
+    border-radius: 18px;
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(139, 92, 246, 0.03);
+
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 240px;
+        height: 240px;
+        background: radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.12),
+            transparent 70%
+        );
+    }
+}
+
+.policyRow {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+
+    @media (max-width: 540px) {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .policyKey {
+        font-family: $font-mono;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $text-muted;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: $text-secondary;
+    }
+}
+
+.engineeringGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 56px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gridRow {
+    p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: $text-secondary;
+        margin-top: 14px;
+    }
+}
+
+.rowHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .rowTitle {
+        font-size: 16px;
+        font-weight: 600;
+        color: $text-primary;
+    }
+}
+.contactSection {
+    padding: 120px 0 160px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+
+    @media (max-width: 768px) {
+        padding: 80px 0 100px;
+    }
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modalContent {
+    background: linear-gradient(180deg, $bg-card, #0f0f12);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 460px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(139, 92, 246, 0.04);
+}
+
+.modalHeader {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+    h3 {
+        color: $text-primary;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+.gridItem {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.01);
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-2px);
+        border-color: rgba(139, 92, 246, 0.2);
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
+    }
+}
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
