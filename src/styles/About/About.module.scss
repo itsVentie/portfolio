@@ -180,6 +180,223 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 }
 
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(5, 5, 6, 0.88);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 100;
+
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.modalContent {
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 18, 22, 0.98),
+        rgba(12, 12, 15, 0.99)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    border-radius: 24px;
+
+    width: 100%;
+    max-width: 460px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(139, 92, 246, 0.04);
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+    h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 650;
+        color: $text-primary;
+        letter-spacing: -0.02em;
+    }
+}
+
+.closeBtn {
+    background: transparent;
+    border: none;
+
+    color: $text-muted;
+
+    cursor: pointer;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: $transition-base;
+    outline: none;
+
+    &:hover {
+        color: $text-primary;
+        background: rgba(255, 255, 255, 0.04);
+    }
+}
+
+.modalTabs {
+    display: flex;
+    gap: 8px;
+
+    padding: 14px 24px;
+
+    background-color: rgba(255, 255, 255, 0.01);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tabBtn {
+    background: transparent;
+    border: 1px solid transparent;
+
+    flex: 1;
+
+    padding: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: $text-muted;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    border-radius: 12px;
+
+    transition: $transition-base;
+
+    outline: none;
+
+    &:hover {
+        color: $text-secondary;
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+}
+
+.tabBtnActive {
+    color: $text-primary !important;
+
+    background-color: rgba(139, 92, 246, 0.08) !important;
+
+    border: 1px solid rgba(139, 92, 246, 0.18);
+
+    box-shadow: 0 10px 24px rgba(139, 92, 246, 0.08);
+
+    font-weight: 600;
+}
+
+.avatarGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    padding: 24px;
+
+    max-height: 340px;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+
+        &:hover {
+            background: rgba(139, 92, 246, 0.2);
+        }
+    }
+}
+
+.gridItem {
+    position: relative;
+
+    aspect-ratio: 1;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    border: 1px solid rgba(255, 255, 255, 0.04);
+
+    background-color: rgba(255, 255, 255, 0.015);
+
+    transition: $transition-base;
+
+    box-sizing: border-box;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition-base;
+    }
+
+    &:hover {
+        border-color: rgba(139, 92, 246, 0.2);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
+
+        img {
+            transform: scale(1.04);
+        }
+    }
+}
+
+.gridItemActive {
+    border-color: rgba(139, 92, 246, 0.45) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(139, 92, 246, 0.25),
+        0 0 35px rgba(139, 92, 246, 0.14);
+}
+
 .profileMeta {
     display: flex;
     flex-direction: column;
