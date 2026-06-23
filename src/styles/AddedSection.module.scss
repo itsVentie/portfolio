@@ -1,0 +1,127 @@
+$text-primary: #f4f4f5;
+$text-secondary: #d4d4d8;
+$text-muted: #71717a;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+.policySection {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 20, 0.98),
+    rgba(12, 12, 15, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(139, 92, 246, 0.02);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -140px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.16),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.policyRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  align-items: center;
+
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .policyKey {
+    font-family: $font-mono;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $text-muted;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    transition: $transition-base;
+    backdrop-filter: blur(8px);
+
+    img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      transition: $transition-base;
+    }
+
+    &[aria-label="GitHub"] img {
+      filter: invert(0.9) brightness(0.9);
+    }
+
+    &:not([aria-label="GitHub"]) img {
+      filter: brightness(0.95);
+    }
+
+    &:hover {
+      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 
+        0 12px 24px rgba(139, 92, 246, 0.2),
+        0 0 20px rgba(139, 92, 246, 0.1);
+
+      img {
+        transform: scale(1.08);
+      }
+
+      &[aria-label="GitHub"] img {
+        filter: invert(1) brightness(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+      }
+
+      &:not([aria-label="GitHub"]) img {
+        filter: brightness(1.1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+      }
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(139, 92, 246, 0.15);
+    }
+  }
+}

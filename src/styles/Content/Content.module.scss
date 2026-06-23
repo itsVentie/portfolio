@@ -1,0 +1,219 @@
+$bg-main: #09090b;
+$bg-secondary: #0d0d11;
+$bg-card: #121214;
+$bg-card-hover: #18181d;
+$bg-input: #161619;
+
+$border-color: #222226;
+$border-light: rgba(255, 255, 255, 0.04);
+$border-hover: rgba(139, 92, 246, 0.18);
+$border-focus: #6d4aff;
+
+$text-primary: #f4f4f5;
+$text-secondary: #d4d4d8;
+$text-muted: #71717a;
+
+$purple-main: #8b5cf6;
+$purple-soft: rgba(139, 92, 246, 0.08);
+$purple-medium: rgba(139, 92, 246, 0.14);
+$purple-glow: rgba(139, 92, 246, 0.3);
+
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+$transition-base: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top, rgba(139,92,246,0.08), transparent 40%),
+    linear-gradient(to bottom, $bg-main, #08080a);
+  color: $text-secondary;
+  position: relative;
+  overflow-x: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient($border-light 1px, transparent 1px),
+      linear-gradient(90deg, $border-light 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 85%);
+    pointer-events: none;
+  }
+}
+
+.hero {
+  width: 100%;
+  padding: 80px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroHeader {
+  max-width: 980px;
+  width: 100%;
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 26px;
+    font-weight: 650;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: $text-muted;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  background: $bg-card;
+  border: 1px solid $border-color;
+
+  font-size: 13px;
+  color: $text-muted;
+
+  cursor: pointer;
+  transition: $transition-base;
+
+  svg {
+    color: $text-muted;
+  }
+
+  &:hover {
+    background: $bg-card-hover;
+    border-color: $border-hover;
+    color: $text-secondary;
+  }
+}
+
+.activeTab {
+  border-color: $purple-main;
+  color: $text-primary;
+  background: $bg-card-hover;
+
+  svg {
+    color: $purple-main;
+  }
+}
+
+.grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  max-width: 980px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card,
+.cardLink {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: 14px;
+  padding: 16px;
+
+  transition: $transition-base;
+
+  h3 {
+    font-size: 15px;
+    color: $text-primary;
+    margin: 10px 0 6px;
+  }
+
+  p {
+    font-size: 13px;
+    color: $text-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &:hover {
+    background: $bg-card-hover;
+    border-color: $border-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  background: $purple-soft;
+  border: 1px solid $border-hover;
+  color: $purple-main;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 12px;
+  color: $text-muted;
+}
+
+.card:hover .tag {
+  background: $purple-medium;
+}
+
+
+@media (max-width: 520px) {
+  .hero {
+    padding: 60px 16px;
+  }
+
+  .heroHeader h1 {
+    font-size: 22px;
+  }
+
+  .tabBtn {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+}

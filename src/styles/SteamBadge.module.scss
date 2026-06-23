@@ -1,0 +1,136 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 20px;
+
+  background: #121214;
+  border: 1px solid #222226;
+  border-radius: 18px;
+
+  color: #d4d4d8;
+  text-decoration: none;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #18181d;
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+  border: 2px solid #8b5cf6;
+
+  object-fit: cover;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  h3 {
+    margin: 0;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    color: #fafafa;
+  }
+
+  span {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+  }
+}
+
+.status {
+  width: fit-content;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.Online {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.Offline {
+  background: rgba(161, 161, 170, 0.15);
+  color: #a1a1aa;
+}
+
+.InGame {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stat {
+  flex: 1;
+
+  padding: 14px;
+
+  background: #161619;
+  border: 1px solid #222226;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+  }
+
+  strong {
+    font-size: 1.2rem;
+    color: #fafafa;
+  }
+}
+
+.lastGame {
+  padding: 14px;
+
+  background: #161619;
+  border: 1px solid #222226;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    color: #a1a1aa;
+    font-size: 0.85rem;
+  }
+
+  strong {
+    color: #fafafa;
+    font-size: 1rem;
+  }
+}

@@ -41,7 +41,7 @@ export const projectsData: ProjectItem[] = [
       "Tailwind",
     ],
     imgSrc:
-      "https://raw.githubusercontent.com/TheFueki/ChessView/main/frontend/src/assets/logo.jpeg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPDbu1woh75V9yvEtN58k4S8gvNvoGttmF9HZxZqCTow&s=10",
   },
 
   {
@@ -61,7 +61,7 @@ export const projectsData: ProjectItem[] = [
       "Chess",
     ],
     imgSrc:
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ3mDTdJmXbPRBSpR0adoQaeFC5XQRYlmc_4UJNyZSCw&s=10",
   },
 
   {
@@ -94,7 +94,7 @@ export const projectsData: ProjectItem[] = [
       "Linux",
     ],
     imgSrc:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1600&auto=format&fit=crop",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuazvpORA61Z-hEXcPLnQbUp2t0CZxB_IO0f4Tea_PGQ&s=10",
   },
 
   {
@@ -118,7 +118,7 @@ export const projectsData: ProjectItem[] = [
     link: "https://github.com/itsVentie/akiraedc",
     tags: ["Python", "Supabase", "PostgreSQL", "Docker", "Flask"],
     imgSrc:
-      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1600&auto=format&fit=crop",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR8F2ZzlZH-ibtAEn6iBeT6pTrEMiLCIBnbfaPl3gZhg&s=10",
   },
 
   {

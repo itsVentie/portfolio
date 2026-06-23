@@ -16,8 +16,7 @@ export const Footer: React.FC = () => {
           <div className={styles.logo}>
             <img
               src={logoImg}
-              alt=""
-              aria-hidden="true"
+              alt="Logo"
               className={styles.logoIcon}
             />
           </div>
@@ -31,40 +30,36 @@ export const Footer: React.FC = () => {
             aria-label="Social networks"
           >
             <a
-              href="https://github.com/ventieRavelle"
+              href="https://github.com/itsVentie"
               target="_blank"
               rel="noreferrer"
-              title="GitHub"
               aria-label="GitHub profile"
             >
-              <img src={github} alt="" aria-hidden="true" />
+              <img src={github} alt="GitHub" />
             </a>
             <a
               href="https://linkedin.com/in/ventie"
               target="_blank"
               rel="noreferrer"
-              title="LinkedIn"
               aria-label="LinkedIn profile"
             >
-              <img src={linkedin} alt="" aria-hidden="true" />
+              <img src={linkedin} alt="LinkedIn" />
             </a>
             <a
               href="https://twitter.com/itsVentie"
               target="_blank"
               rel="noreferrer"
-              title="X (Twitter)"
               aria-label="X profile"
             >
-              <img src={twitter} alt="" aria-hidden="true" />
+              <img src={twitter} alt="Twitter" />
             </a>
             <a
               href="https://t.me/ventie"
               target="_blank"
               rel="noreferrer"
-              title="Telegram"
               aria-label="Telegram personal account"
             >
-              <img src={telegram} alt="" aria-hidden="true" />
+              <img src={telegram} alt="Telegram" />
             </a>
           </div>
         </div>
@@ -73,8 +68,8 @@ export const Footer: React.FC = () => {
           <h4>Navigation</h4>
           <nav aria-label="Secondary site navigation">
             <a href="/">Home</a>
-            <a href="/projects">Projects</a>
-            <a href="/lyrics">Lyrics</a>
+            <a href="/about">Projects</a>
+            <a href="/projects">Lyrics</a>
             <a href="/download">Downloads</a>
             <a href="/system">Details</a>
           </nav>
@@ -84,31 +79,23 @@ export const Footer: React.FC = () => {
           <h4>Network</h4>
           <nav aria-label="Community links">
             <a
-              href="https://t.me/ventie.dev"
+              href="https://t.me/dfir_lab"
               target="_blank"
               rel="noreferrer"
-              aria-label="Main Telegram channel"
+              aria-label="DFIR Lab Telegram channel"
             >
               Main Channel
             </a>
             <a
-              href="https://t.me/your_dev_channel"
+              href="https://t.me/thefueki"
               target="_blank"
               rel="noreferrer"
-              aria-label="Development Telegram channel"
+              aria-label="Telegram channel"
             >
               Dev Broadcast
             </a>
             <a
-              href="https://t.me/your_art_channel"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Creative Telegram channel"
-            >
-              Creative Feed
-            </a>
-            <a
-              href="https://discord.gg/VDbdgjZx5W"
+              href="https://discord.gg/JjcTWnr8rm"
               target="_blank"
               rel="noreferrer"
               aria-label="Discord server"
@@ -122,8 +109,7 @@ export const Footer: React.FC = () => {
           <h4>Contact</h4>
           <address aria-label="Contact information">
             <p>
-              Email:{" "}
-              <a href="mailto:VentieRavelle@gmail.com">Ventie@ventie.dev</a>
+              Email: <a href="mailto:ventie@ventie.dev">Ventie@ventie.dev</a>
             </p>
             <p>
               Phone: <a href="tel:+33756915757">+33756915757</a>

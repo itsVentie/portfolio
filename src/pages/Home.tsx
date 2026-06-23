@@ -13,6 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import { Footer } from "../components/Footer";
 import { Divider } from "../components/Divider";
+import { AddedSection } from "../components/AddedSection";
 import styles from "@styles/Home.module.scss";
 import { FR } from "country-flag-icons/react/3x2";
 
@@ -142,36 +143,14 @@ export const Home: React.FC = () => {
                 </div>
 
                 <div className={styles.specialtyTitle}>
-                  DevSecOps // DFIR R&D
+                  DevSecOps // DFIR // Purple Team
                 </div>
 
                 <div className={styles.badge}>Independent Researcher</div>
               </div>
             </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={2}
-              className={styles.policySection}
-            >
-              <div className={styles.policyRow}>
-                <span className={styles.policyKey}>Engagement</span>
-                <p>
-                  Open for R&D, teaming, infrastructure audits, CTFs, and
-                  technical discussions. Don't sell anything.
-                </p>
-              </div>
-              <div className={styles.policyRow}>
-                <span className={styles.policyKey}>Compliance</span>
-                <p>
-                  Strictly no involvement in illegal activities, doxing,
-                  swatting, or malicious drainer scenes.
-                </p>
-              </div>
-            </motion.div>
+            <AddedSection variants={fadeUp} custom={2} />
           </div>
 
           <motion.div

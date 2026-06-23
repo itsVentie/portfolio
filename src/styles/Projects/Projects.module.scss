@@ -112,310 +112,320 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .avatarWrapper {
-    position: relative;
-    width: 148px;
-    height: 148px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: $transition-base;
-    isolation: isolate;
+  position: relative;
+  width: 144px;
+  height: 144px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: $transition-base;
+  outline: none;
+  isolation: isolate;
 
-    &:hover {
-        transform: translateY(-2px);
+  &:hover {
+    transform: translateY(-2px);
 
-        .avatarOverlay {
-            opacity: 1;
-        }
-
-        .avatarGlow {
-            opacity: 1;
-            transform: scale(1.15);
-        }
+    .avatarOverlay {
+      opacity: 1;
     }
 
-    &:active {
-        transform: scale(0.98);
+    .avatarGlow {
+      opacity: 1;
+      transform: scale(1.15);
     }
-}
+  }
 
-.avatar {
+  .avatar {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
     object-fit: cover;
+    border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 2;
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.02),
-        0 20px 40px rgba(0, 0, 0, 0.45);
-}
+      0 10px 40px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
+  }
 
-.avatarGlow {
+  .avatarGlow {
     position: absolute;
-    inset: -18px;
+    inset: -16px;
     border-radius: 50%;
     background: radial-gradient(
-        circle,
-        rgba(139, 92, 246, 0.3) 0%,
-        rgba(139, 92, 246, 0.08) 40%,
-        transparent 72%
+      circle,
+      rgba(139, 92, 246, 0.28) 0%,
+      rgba(139, 92, 246, 0.06) 45%,
+      transparent 72%
     );
     opacity: 0.75;
     transition: $transition-base;
     z-index: 1;
-}
+  }
 
-.avatarOverlay {
+  .avatarOverlay {
     position: absolute;
     inset: 0;
-    border-radius: 50%;
-    z-index: 3;
-    background: rgba(9, 9, 11, 0.7);
+    background: rgba(9, 9, 11, 0.68);
     backdrop-filter: blur(4px);
-
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-
     opacity: 0;
+    z-index: 3;
     transition: $transition-base;
 
     span {
-        color: #fff;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffffff;
     }
+  }
 }
 
 .profileMeta {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .nameRow {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .nicknameWrapper {
-    position: relative;
+  position: relative;
+  display: inline-block;
 }
 
 .nicknameBtn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  outline: none;
 
-    &:hover {
-        .nickname {
-            color: #ffffff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
-        }
-
-        .caretIcon {
-            color: $text-secondary;
-        }
+  &:hover {
+    .nickname {
+      color: #ffffff;
+      text-shadow: 0 0 18px rgba(139, 92, 246, 0.18);
     }
-}
 
-.nickname {
-    font-size: 42px;
-    font-weight: 700;
+    .caretIcon {
+      color: #c4b5fd;
+    }
+  }
+
+  .nickname {
+    font-size: 36px;
+    font-weight: 650;
     color: $text-primary;
-    letter-spacing: -0.05em;
-    line-height: 1;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
     transition: $transition-base;
-
-    @media (max-width: 768px) {
-        font-size: 34px;
-    }
+  }
 }
 
 .caretIcon {
-    color: $text-muted;
-    transition: $transition-base;
-    margin-top: 5px;
+  color: $text-muted;
+  transition: $transition-base;
+  margin-top: 6px;
 }
 
 .caretIconOpen {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .akaDropdown {
-    position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
-
-    min-width: 200px;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(22, 22, 27, 0.95),
-        rgba(14, 14, 18, 0.96)
-    );
-
-    border: 1px solid $border-light;
-    border-radius: 14px;
-
-    padding: 14px 16px;
-    z-index: 30;
-
-    box-shadow: $shadow-card;
-    backdrop-filter: blur(12px);
-
-    animation: dropdownFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 24, 0.96),
+    rgba(12, 12, 16, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 14px 16px;
+  min-width: 180px;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(139, 92, 246, 0.05);
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .akaTitle {
-    font-family: $font-mono;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: $text-muted;
-    margin-bottom: 10px;
+  font-family: $font-mono;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $text-muted;
+  margin-bottom: 8px;
 }
 
 .akaList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  li {
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 500;
+    transition: $transition-base;
 
-    li {
-        color: $text-secondary;
-        font-size: 14px;
-        font-weight: 500;
-        transition: $transition-base;
-
-        &:hover {
-            color: #fff;
-            transform: translateX(2px);
-        }
+    &:hover {
+      color: #ffffff;
+      transform: translateX(2px);
     }
+  }
 }
 
+
 .locationBadge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #d4d4d8;
+}
 
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-
-    border-radius: 999px;
-    padding: 6px 12px;
-
-    color: $text-secondary;
-    font-size: 12px;
-    font-weight: 500;
-
-    backdrop-filter: blur(8px);
-
-    .flagIcon {
-        width: 16px;
-        border-radius: 2px;
-    }
+.flagIcon {
+  width: 16px;
+  border-radius: 2px;
 }
 
 .specialtyTitle {
-    font-family: $font-mono;
-    font-size: 13px;
-    color: $text-muted;
-    letter-spacing: 0.02em;
+  font-family: $font-mono;
+  font-size: 13px;
+  color: $text-muted;
+  letter-spacing: 0.02em;
 }
 
 .badge {
-    width: fit-content;
-
-    padding: 8px 14px;
-    border-radius: 999px;
-
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-
-    color: $text-secondary;
-    font-size: 12px;
-    font-weight: 600;
-
-    backdrop-filter: blur(8px);
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-secondary;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 8px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
 }
 
 .policySection {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 20, 0.98),
+    rgba(12, 12, 15, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 32px;
+  border-radius: 22px;
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(139, 92, 246, 0.03);
+  position: relative;
+  overflow: hidden;
 
-    background: linear-gradient(
-        180deg,
-        rgba(18, 18, 20, 0.96),
-        rgba(13, 13, 16, 0.98)
+  &::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.14),
+      transparent 70%
     );
-
-    border: 1px solid $border-light;
-    border-radius: 24px;
-
-    padding: 36px;
-
-    box-shadow: $shadow-card;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-            circle at top right,
-            rgba(139, 92, 246, 0.12),
-            transparent 35%
-        );
-        pointer-events: none;
-    }
-
-    @media (max-width: 768px) {
-        padding: 28px;
-    }
+    pointer-events: none;
+  }
 }
 
 .policyRow {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 24px;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  align-items: center;
 
-    @media (max-width: 640px) {
-        grid-template-columns: 1fr;
-        gap: 8px;
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .policyKey {
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $text-muted;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  a {
+    font-family: $font-mono;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-secondary;
+    text-decoration: none;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    transition: $transition-base;
+
+    &:hover {
+      color: #ffffff;
+      background: rgba(139, 92, 246, 0.08);
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+      transform: translateY(-1px);
     }
 
-    .policyKey {
-        font-family: $font-mono;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: $text-muted;
-        padding-top: 4px;
+    &:active {
+      transform: translateY(0);
     }
-
-    p {
-        margin: 0;
-        color: $text-secondary;
-        line-height: 1.75;
-        font-size: 14px;
-    }
+  }
 }
 
 .projectsSection {
