@@ -5,7 +5,6 @@ import {
   Rss,
   BookOpen,
   Globe,
-  X,
   Tag,
   Clock,
 } from "@phosphor-icons/react";

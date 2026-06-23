@@ -8,9 +8,7 @@ import {
   FilmStrip,
   Brain,
   Code,
-  Trophy,
   Translate,
-  Link,
   GameController,
   Desktop,
   ShieldCheck,
@@ -18,8 +16,6 @@ import {
 } from "@phosphor-icons/react";
 import { FR, RU, UA, GB, ES } from "country-flag-icons/react/3x2";
 import { Footer } from "../../components/Footer";
-import { Divider } from "../../components/Divider";
-import { SteamBadge } from "@/components/steambadge";
 import { AddedSection } from "@/components/AddedSection";
 import styles from "@styles/About/About.module.scss";
 
