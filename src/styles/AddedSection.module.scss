@@ -57,21 +57,15 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     letter-spacing: 0.12em;
     color: $text-muted;
   }
-
-  p {
-    font-size: 15px;
-    line-height: 1.75;
-    color: $text-secondary;
-    margin: 0;
-  }
 }
 
 .socialLinks {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  align-items: center;
 
-  a {
+  a, .openModalBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,14 +76,18 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 14px;
     transition: $transition-base;
     backdrop-filter: blur(8px);
+    cursor: pointer;
+    padding: 0;
 
-    img {
+    img, svg {
       width: 22px;
       height: 22px;
       object-fit: contain;
       transition: $transition-base;
     }
+  }
 
+  a {
     &[aria-label="GitHub"] img {
       filter: invert(0.9) brightness(0.9);
     }
@@ -97,31 +95,229 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     &:not([aria-label="GitHub"]) img {
       filter: brightness(0.95);
     }
+  }
 
-    &:hover {
-      background: rgba(139, 92, 246, 0.12);
-      border-color: rgba(139, 92, 246, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 
-        0 12px 24px rgba(139, 92, 246, 0.2),
-        0 0 20px rgba(139, 92, 246, 0.1);
+  .openModalBtn {
+    color: $text-muted;
+    background: rgba(255, 255, 255, 0.02);
 
-      img {
-        transform: scale(1.08);
-      }
-
-      &[aria-label="GitHub"] img {
-        filter: invert(1) brightness(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
-      }
-
-      &:not([aria-label="GitHub"]) img {
-        filter: brightness(1.1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
-      }
-    }
-
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 12px rgba(139, 92, 246, 0.15);
+    svg {
+      color: $text-muted;
     }
   }
+
+  a:hover, .openModalBtn:hover {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 24px rgba(139, 92, 246, 0.2),
+      0 0 20px rgba(139, 92, 246, 0.1);
+
+    img, svg {
+      transform: scale(1.08);
+    }
+  }
+
+  a:hover {
+    &[aria-label="GitHub"] img {
+      filter: invert(1) brightness(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+    }
+
+    &:not([aria-label="GitHub"]) img {
+      filter: brightness(1.1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+    }
+  }
+
+  .openModalBtn:hover {
+    color: #ffffff;
+    
+    svg {
+      color: rgba(139, 92, 246, 1);
+    }
+  }
+
+  a:active, .openModalBtn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(139, 92, 246, 0.15);
+  }
+}
+
+.spotifyTrack {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(30, 215, 96, 0.03);
+  border: 1px solid rgba(30, 215, 96, 0.08);
+  padding: 8px 16px 8px 10px;
+  border-radius: 14px;
+  max-width: max-content;
+  text-decoration: none;
+  transition: $transition-base;
+
+  .albumArtWrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    .albumArt {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .equalizerOverlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2px;
+      padding-bottom: 8px;
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      span {
+        width: 2px;
+        height: 100%;
+        background: #1ed760;
+        border-radius: 1px;
+        animation: bounce 0.8s ease infinite alternate;
+        
+        &:nth-child(1) { animation-delay: 0.1s; height: 30%; }
+        &:nth-child(2) { animation-delay: 0.4s; height: 100%; }
+        &:nth-child(3) { animation-delay: 0.2s; height: 60%; }
+      }
+    }
+  }
+
+  .trackName {
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 400;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 320px;
+
+    @media (max-width: 540px) {
+      max-width: 200px;
+    }
+  }
+
+  &:hover {
+    background: rgba(30, 215, 96, 0.08);
+    border-color: rgba(30, 215, 96, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 215, 96, 0.15);
+
+    .albumArtWrapper {
+      .albumArt {
+        filter: blur(1px);
+      }
+      .equalizerOverlay {
+        opacity: 1;
+      }
+    }
+
+    .trackName {
+      color: #ffffff;
+    }
+  }
+
+  &.offline {
+    background: rgba(255, 255, 255, 0.01);
+    border-color: rgba(255, 255, 255, 0.03);
+    padding: 10px 16px;
+    pointer-events: none;
+
+    .trackName {
+      color: $text-muted;
+      font-style: italic;
+    }
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 11, 14, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: #121215;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  padding: 24px;
+
+  .socialLinks {
+    justify-content: center;
+
+    a {
+      width: 54px;
+      height: 54px;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+  }
+}
+
+.closeModalBtn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+@keyframes bounce {
+  0% { transform: scaleY(0.2); }
+  100% { transform: scaleY(1); }
 }

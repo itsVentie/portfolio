@@ -19,8 +19,8 @@ $purple-medium: rgba(139, 92, 246, 0.14);
 $purple-glow: rgba(139, 92, 246, 0.3);
 
 $font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 .pageWrapper {
   min-height: 100vh;
   display: flex;
@@ -291,22 +291,25 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
-
 .locationBadge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: #18181b;
-  border: 1px solid #27272a;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: #d4d4d8;
-}
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $text-secondary;
+  backdrop-filter: blur(8px);
 
-.flagIcon {
-  width: 16px;
-  border-radius: 2px;
+  .flagIcon {
+    width: 16px;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+  }
 }
 
 .specialtyTitle {
@@ -421,43 +424,198 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
-.engineeringGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  padding-top: 56px;
 
-  @media (max-width: 768px) {
+.locationBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #d4d4d8;
+}
+
+.flagIcon {
+  width: 16px;
+  border-radius: 2px;
+}
+
+.expertFocusSection {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+
+  @media (max-width: 960px) {
     grid-template-columns: 1fr;
     gap: 32px;
   }
 }
 
-.gridRow {
-  p {
-    font-size: 14px;
-    line-height: 1.75;
-    color: $text-secondary;
-    margin: 14px 0 0;
+.focusContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.focusTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid $border-light;
+  padding-bottom: 12px;
+}
+
+.focusTabBtn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: $transition-base;
+  font-size: 14px;
+  font-weight: 500;
+
+  svg {
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    color: $text-primary;
+    background: rgba(255, 255, 255, 0.02);
   }
 }
 
-.rowHeader {
+.focusTabBtnActive {
+  color: $text-primary;
+  background: $purple-soft;
+  border: 1px solid $border-hover;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.05);
+
+  svg {
+    color: $purple-main;
+  }
+}
+
+.focusBody {
+  min-height: 180px;
+}
+
+.focusContent {
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 14px 0;
+    color: $text-primary;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: $text-secondary;
+    margin: 0 0 24px 0;
+  }
+}
+
+.focusTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  span {
+    font-family: $font-mono;
+    font-size: 12px;
+    padding: 6px 12px;
+    background: linear-gradient(to bottom, rgba(22, 22, 25, 0.7), rgba(16, 16, 20, 0.7));
+    border: 1px solid $border-light;
+    border-radius: 8px;
+    color: $text-secondary;
+    transition: $transition-base;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+  }
+}
+
+.sideMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metricItemCard {
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 20, 0.8),
+    rgba(12, 12, 15, 0.8)
+  );
+  border: 1px solid $border-light;
+  padding: 20px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: $transition-base;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.metricHeader {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: $text-primary;
+  gap: 8px;
+  font-size: 12px;
+  font-family: $font-mono;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 
   svg {
     color: $text-muted;
   }
+}
 
-  .rowTitle {
-    font-size: 16px;
+.metricBody {
+  display: flex;
+  align-items: center;
+
+  h4 {
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    color: $text-primary;
+    margin: 0;
+    letter-spacing: -0.01em;
   }
+}
+
+.statusDotActive {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
 .contactSection {
@@ -778,5 +936,20 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 960px) {
+  .sideMetrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .sideMetrics {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }

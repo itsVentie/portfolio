@@ -1,130 +1,328 @@
+$bg-card: #121214;
+$bg-card-hover: #18181d;
+$border-light: rgba(255, 255, 255, 0.04);
+$border-hover: rgba(139, 92, 246, 0.18);
+
+$text-primary: #f4f4f5;
+$text-secondary: #d4d4d8;
+$text-muted: #71717a;
+
+$purple-main: #8b5cf6;
+$purple-soft: rgba(139, 92, 246, 0.08);
+
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
 .desktopNav {
-  width: 100%;
-  background: rgba(9, 9, 11, 0.8);
-  backdrop-filter: blur(12px);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid $border-light;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
 }
 
 .navContainer {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
   display: flex;
   align-items: center;
-  min-height: 56px;
-  gap: 24px;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0; 
+  transition: $transition-base;
   
   img {
     height: 32px;
-    width: 32px;
-    border-radius: 6px;
-    object-fit: cover;
-    transition: transform 0.2s;
-    
-    &:hover {
-      transform: scale(1.05);
-    }
+    width: auto;
+    object-fit: contain;
+  }
+
+  &:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
   }
 }
 
 .navLinksWrapper {
   display: flex;
-  flex-grow: 1;
-  justify-content: center; 
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
 }
 
 .dropdown {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4px 0;
+  padding: 14px 0;
 }
 
 .navLink {
   display: flex;
   align-items: center;
   gap: 6px;
+  color: $text-secondary;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  color: #a1a1aa;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: $transition-base;
+  cursor: pointer;
 
   &:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
+    color: $text-primary;
+    background: rgba(255, 255, 255, 0.03);
   }
 }
 
 .caret {
-  transition: transform 0.3s ease;
-  opacity: 0.5;
+  color: $text-muted;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .caretRotated {
   transform: rotate(180deg);
+  color: $text-primary;
 }
 
 .dropdownContent {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 4px);
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  min-width: 240px;
-  background: #141417;
-  border: 1px solid #27272a;
-  border-radius: 10px;
+  transform: translateX(-50%) translateY(-8px) scale(0.97);
+  background: linear-gradient(to bottom, rgba(20, 20, 24, 0.98), rgba(12, 12, 16, 0.99));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
   padding: 8px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  pointer-events: none;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.03);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s linear;
+  z-index: 100;
 }
 
 .dropdownVisible {
   opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .dropdownLink {
-  padding: 10px 12px;
-  font-size: 13px;
-  color: #a1a1aa;
+  color: $text-secondary;
   text-decoration: none;
-  border-radius: 6px;
-  display: block;
-  transition: all 0.2s ease;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: $transition-base;
+  white-space: nowrap;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
-    padding-left: 16px;
+    background: $purple-soft;
+    transform: translateX(2px);
   }
 }
 
-@media (max-width: 768px) {
-  .navLinksWrapper {
-    justify-content: flex-end;
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actionDropdownWrapper {
+  position: relative;
+}
+
+.actionBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: $text-secondary;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    color: $text-primary;
+    background: rgba(255, 255, 255, 0.03);
   }
-  .dropdown {
-    display: none; 
+}
+
+.actionBtnActive {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: $text-primary;
+}
+
+.actionBtnText {
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.actionDropdownContent {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  transform: translateY(-6px) scale(0.98);
+  background: linear-gradient(to bottom, rgba(20, 20, 24, 0.98), rgba(12, 12, 16, 0.99));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 6px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s linear;
+  z-index: 101;
+
+  button {
+    background: transparent;
+    border: none;
+    color: $text-secondary;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $transition-base;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+
+    &:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+}
+
+.actionDropdownVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.activeSubLink {
+  color: $purple-main !important;
+  background: $purple-soft !important;
+  font-weight: 600 !important;
+}
+
+.themeIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.appLauncherContainer {
+  position: relative;
+}
+
+.appLauncherBtn {
+  background: transparent;
+  border: none;
+  color: $text-muted;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-base;
+  outline: none;
+
+  &:hover {
+    color: $text-primary;
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.appLauncherBtnActive {
+  color: $purple-main !important;
+  background: $purple-soft !important;
+  border: 1px solid $border-hover;
+}
+
+.appLauncherContent {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  transform: translateY(-8px) scale(0.97);
+  background: linear-gradient(to bottom, rgba(18, 18, 22, 0.98), rgba(12, 12, 15, 0.99));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 16px;
+  width: 280px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s linear;
+  z-index: 102;
+}
+
+.appLauncherVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.appLauncherLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid $border-light;
+  border-radius: 10px;
+  color: $text-secondary;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: $transition-base;
+
+  &:hover {
+    color: #ffffff;
+    border-color: rgba(139, 92, 246, 0.25);
+    background-color: $bg-card-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.06);
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   Terminal,
   CaretDown,
@@ -10,6 +11,8 @@ import {
   X,
   Image as ImageIcon,
   FilmStrip,
+  Cpu,
+  Code
 } from "@phosphor-icons/react";
 import { Footer } from "../components/Footer";
 import { Divider } from "../components/Divider";
@@ -21,7 +24,9 @@ import { useAvatarManager } from "../components/avatars/useAvatarManager";
 import { photosData, gifsData } from "../components/avatars/avatars.config";
 
 export const Home: React.FC = () => {
+  const { t } = useTranslation();
   const [isAkaOpen, setIsAkaOpen] = useState(false);
+  const [activeTabFocus, setActiveTabFocus] = useState<"engineering" | "forensics">("engineering");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -63,6 +68,11 @@ export const Home: React.FC = () => {
       scale: 0.95,
       transition: { duration: 0.15, ease: "easeIn" },
     },
+  };
+
+  const tabContentVariants: Variants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }
   };
 
   const handleChange = (
@@ -125,7 +135,7 @@ export const Home: React.FC = () => {
 
                     {isAkaOpen && (
                       <div className={styles.akaDropdown}>
-                        <div className={styles.akaTitle}>also known as</div>
+                        <div className={styles.akaTitle}>{t("hero.aka")}</div>
                         <ul className={styles.akaList}>
                           <li>@Vyntiq</li>
                           <li>@Vintiq</li>
@@ -143,10 +153,10 @@ export const Home: React.FC = () => {
                 </div>
 
                 <div className={styles.specialtyTitle}>
-                  DevSecOps // DFIR // Purple Team
+                  {t("hero.specialty")}
                 </div>
 
-                <div className={styles.badge}>Independent Researcher</div>
+                <div className={styles.badge}>{t("hero.researcher")}</div>
               </div>
             </motion.div>
 
@@ -157,29 +167,90 @@ export const Home: React.FC = () => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            custom={4}
-            className={styles.engineeringGrid}
+            custom={3}
+            className={styles.expertFocusSection}
           >
-            <div className={styles.gridRow}>
-              <div className={styles.rowHeader}>
-                <ShieldCheck size={18} weight="thin" />
-                <span className={styles.rowTitle}>DevSecOps & Core</span>
+            <div className={styles.focusContainer}>
+              <div className={styles.focusTabs}>
+                <button
+                  className={`${styles.focusTabBtn} ${activeTabFocus === "engineering" ? styles.focusTabBtnActive : ""}`}
+                  onClick={() => setActiveTabFocus("engineering")}
+                >
+                  <Code size={18} weight="regular" />
+                  <span>{t("focus.engineering")}</span>
+                </button>
+                <button
+                  className={`${styles.focusTabBtn} ${activeTabFocus === "forensics" ? styles.focusTabBtnActive : ""}`}
+                  onClick={() => setActiveTabFocus("forensics")}
+                >
+                  <Cpu size={18} weight="regular" />
+                  <span>{t("focus.forensics")}</span>
+                </button>
               </div>
-              <p>
-                Go, C/C++, Rust, WinAPI, Memory Management. Hardening CI/CD
-                pipelines, container security, and applied cryptography (ECC,
-                ZKP).
-              </p>
+
+              <div className={styles.focusBody}>
+                <AnimatePresence mode="wait">
+                  {activeTabFocus === "engineering" ? (
+                    <motion.div
+                      key="engineering"
+                      variants={tabContentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className={styles.focusContent}
+                    >
+                      <h3>{t("focus.engineeringTitle")}</h3>
+                      <p>{t("focus.engineeringDesc")}</p>
+                      <div className={styles.focusTags}>
+                        <span>WinAPI</span>
+                        <span>Memory Management</span>
+                        <span>Applied Crypto</span>
+                        <span>CI/CD Hardening</span>
+                        <span>K8s Security</span>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="forensics"
+                      variants={tabContentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      className={styles.focusContent}
+                    >
+                      <h3>{t("focus.forensicsTitle")}</h3>
+                      <p>{t("focus.forensicsDesc")}</p>
+                      <div className={styles.focusTags}>
+                        <span>Memory Forensics</span>
+                        <span>Artifact Analysis</span>
+                        <span>Evasion Techniques</span>
+                        <span>Reverse Engineering</span>
+                        <span>Purple Teaming</span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
-            <div className={styles.gridRow}>
-              <div className={styles.rowHeader}>
-                <MagnifyingGlass size={18} weight="thin" />
-                <span className={styles.rowTitle}>DFIR & Research</span>
+
+            <div className={styles.sideMetrics}>
+              <div className={styles.metricItemCard}>
+                <div className={styles.metricHeader}>
+                  <ShieldCheck size={20} weight="thin" />
+                  <span>{t("metrics.statusTitle")}</span>
+                </div>
+                <div className={styles.metricBody}>
+                  <span className={styles.statusDotActive}></span>
+                  <h4>{t("metrics.statusBody")}</h4>
+                </div>
               </div>
-              <p>
-                Memory forensics, artifact analysis, evasion techniques, and
-                reverse engineering using Ghidra and IDA Pro.
-              </p>
+              <div className={styles.metricItemCard}>
+                <div className={styles.metricHeader}>
+                  <MagnifyingGlass size={20} weight="thin" />
+                  <span>{t("metrics.focusTitle")}</span>
+                </div>
+                <div className={styles.metricBody}>
+                  <h4>{t("metrics.focusBody")}</h4>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -199,12 +270,9 @@ export const Home: React.FC = () => {
           >
             <div className={styles.sectionTitleRow}>
               <Terminal size={22} weight="thin" />
-              <h2>Contact</h2>
+              <h2>{t("contact.title")}</h2>
             </div>
-            <p>
-              Get in touch for research partnerships, technical inquiries, or
-              collaboration.
-            </p>
+            <p>{t("contact.desc")}</p>
           </motion.div>
 
           <motion.div
@@ -217,46 +285,46 @@ export const Home: React.FC = () => {
           >
             <form onSubmit={handleSubmit} className={styles.contactForm}>
               <div className={styles.formGroup}>
-                <label htmlFor="name">Name / Company</label>
+                <label htmlFor="name">{t("contact.nameLabel")}</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your name or organization"
+                  placeholder={t("contact.namePlaceholder")}
                   required
                 />
               </div>
 
               <div className={styles.formGroup}>
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email">{t("contact.emailLabel")}</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="name@example.com"
+                  placeholder={t("contact.emailPlaceholder")}
                   required
                 />
               </div>
 
               <div className={styles.formGroup}>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t("contact.messageLabel")}</label>
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your message, project details, or proposal..."
+                  placeholder={t("contact.messagePlaceholder")}
                   required
                 />
               </div>
 
               <button type="submit" className={styles.submitBtn}>
-                <span>Send Message</span>
+                <span>{t("contact.submit")}</span>
                 <PaperPlaneTilt size={16} weight="thin" />
               </button>
             </form>
@@ -278,7 +346,7 @@ export const Home: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className={styles.modalHeader}>
-                <h3>Select Avatar</h3>
+                <h3>{t("avatarModal.title")}</h3>
                 <button className={styles.closeBtn} onClick={closeModal}>
                   <X size={18} />
                 </button>
@@ -290,14 +358,14 @@ export const Home: React.FC = () => {
                   onClick={() => setActiveTab("photos")}
                 >
                   <ImageIcon size={16} />
-                  <span>Photos</span>
+                  <span>{t("avatarModal.photos")}</span>
                 </button>
                 <button
                   className={`${styles.tabBtn} ${activeTab === "gifs" ? styles.tabBtnActive : ""}`}
                   onClick={() => setActiveTab("gifs")}
                 >
                   <FilmStrip size={16} />
-                  <span>GIFs</span>
+                  <span>{t("avatarModal.gifs")}</span>
                 </button>
               </div>
 

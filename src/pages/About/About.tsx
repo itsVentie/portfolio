@@ -197,39 +197,39 @@ export const About: React.FC = () => {
             <AddedSection variants={fadeUp} custom={2} />
             </div>
 
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={2}
-            className={styles.bentoGrid}
-          >
-            <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
-              <div className={styles.cardHeader}>
-                <Code size={18} weight="regular" />
-                <span className={styles.cardTitle}>GitHub Activity</span>
-              </div>
-              <div className={styles.githubContainer}>
-                <div className={styles.githubMain}>
-                  <img
-                    src="https://github.com/itsventie.png"
-                    alt="itsventie GitHub Avatar"
-                    className={styles.githubAvatar}
-                  />
-                  <img
-                    src="https://github-readme-stats.vercel.app/api?username=itsventie&show_icons=true&theme=dark&hide_border=true&bg_color=121214&title_color=8b5cf6&icon_color=8b5cf6&text_color=d4d4d8"
-                    alt="itsventie GitHub Stats"
-                    className={styles.githubStatsImg}
-                  />
-                </div>
-                <img
-                  src="https://github-readme-stats.vercel.app/api/top-langs/?username=itsventie&layout=compact&theme=dark&hide_border=true&bg_color=121214&title_color=8b5cf6&text_color=d4d4d8"
-                  alt="Top Languages"
-                  className={styles.githubLangsImg}
-                />
-              </div>
-            </div>
+       <motion.div
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  custom={2}
+  className={styles.bentoGrid}
+>
+  <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
+    <div className={styles.cardHeader}>
+      <Code size={18} weight="regular" />
+      <span className={styles.cardTitle}>GitHub Activity</span>
+    </div>
+    <div className={styles.githubContainer}>
+      <div className={styles.githubMain}>
+        <img
+          src="https://github.com/itsventie.png"
+          alt="itsventie GitHub Avatar"
+          className={styles.githubAvatar}
+        />
+        <img
+          src="https://github-readme-stats-one.vercel.app/api?username=itsventie&show_icons=true&theme=dark&hide_border=true&bg_color=121214&title_color=8b5cf6&icon_color=8b5cf6&text_color=d4d4d8"
+          alt="itsventie GitHub Stats"
+          className={styles.githubStatsImg}
+        />
+      </div>
+      <img
+        src="https://github-readme-stats-one.vercel.app/api/top-langs/?username=itsventie&layout=compact&theme=dark&hide_border=true&bg_color=121214&title_color=8b5cf6&text_color=d4d4d8"
+        alt="Top Languages"
+        className={styles.githubLangsImg}
+      />
+    </div>
+  </div>
 
            <div className={styles.bentoCard}>
   <div className={styles.cardHeader}>
@@ -386,6 +386,7 @@ export const About: React.FC = () => {
       <div className={styles.shogiRank}>
         <span>Shogi Rank</span>
         <strong>5 Kyu</strong>
+        <span>Go <strong>1 Dan</strong></span>
       </div>
     </div>
   </div>

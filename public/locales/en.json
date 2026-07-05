@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "specialty": "DevSecOps // DFIR // Purple Team",
+    "researcher": "Независимый исследователь",
+    "aka": "также известен как"
+  },
+  "focus": {
+    "engineering": "Core Engineering & DevSecOps",
+    "forensics": "DFIR & Security Research",
+    "engineeringTitle": "Разработка систем и безопасность инфраструктуры",
+    "engineeringDesc": "Фокус на проектировании отказоустойчивых и безопасных систем с использованием низкоуровневых возможностей Go, C/C++ и Rust. Проектирование архитектуры управления памятью и интеграция криптографических примитивов (ECC, ZKP).",
+    "forensicsTitle": "Расследование инцидентов и анализ угроз",
+    "forensicsDesc": "Анализ сложных цифровых артефактов, форензика оперативной памяти и исследование механизмов обхода защиты. Реверс-инжиниринг малвари и детальный анализ техник эксплуатации в средах Ghidra и IDA Pro."
+  },
+  "contact": {
+    "title": "Контакты",
+    "desc": "Свяжитесь со мной для исследовательского партнерства, технических запросов или сотрудничества.",
+    "nameLabel": "Имя / Компания",
+    "namePlaceholder": "Ваше имя или организация",
+    "emailLabel": "Email адрес",
+    "emailPlaceholder": "name@example.com",
+    "messageLabel": "Сообщение",
+    "messagePlaceholder": "Ваше сообщение, детали проекта или предложение...",
+    "submit": "Отправить сообщение"
+  },
+  "metrics": {
+    "statusTitle": "Статус исследований",
+    "statusBody": "Активен и открыт для предложений",
+    "focusTitle": "Основной фокус",
+    "focusBody": "Превентивное укрепление"
+  },
+  "avatarModal": {
+    "title": "Выбрать аватар",
+    "photos": "Фотографии",
+    "gifs": "GIF-анимации"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "content": "Content / Blog",
+    "download": "Download",
+    "details": "System / Details"
+  },
+  "about": {
+    "certs": "Certificates and Qualifications",
+    "accred": "Accreditations",
+    "awards": "Awards and Recognition"
+  },
+  "projects": {
+    "main": "Main Projects (Portfolio)",
+    "open": "Open Source / GitHub",
+    "freelance": "Freelance and Commercial"
+  },
+  "content": {
+    "writeups": "Writeups",
+    "articles": "Articles and Tutorials",
+    "research": "Research Publications",
+    "blog": "Personal Blog / Notes"
+  }
+}

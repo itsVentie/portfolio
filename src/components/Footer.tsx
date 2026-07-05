@@ -79,18 +79,18 @@ export const Footer: React.FC = () => {
           <h4>Network</h4>
           <nav aria-label="Community links">
             <a
-              href="https://t.me/dfir_lab"
+              href="https://t.me/ventibloxa"
               target="_blank"
               rel="noreferrer"
-              aria-label="DFIR Lab Telegram channel"
+              aria-label="Telegram channel"
             >
               Main Channel
             </a>
             <a
-              href="https://t.me/thefueki"
+              href="https://t.me/dfir_lab"
               target="_blank"
               rel="noreferrer"
-              aria-label="Telegram channel"
+              aria-label="DFIR lab Telegram channel"
             >
               Dev Broadcast
             </a>

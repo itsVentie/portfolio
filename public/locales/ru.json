@@ -1,0 +1,13 @@
+{
+  "hero": {
+    "specialty": "DevSecOps // DFIR // Purple Team",
+    "researcher": "Независимый исследователь",
+    "aka": "также известен как"
+  },
+  "focus": {
+    "engineering": "Core Engineering & DevSecOps",
+    "forensics": "DFIR & Security Research",
+    "engineeringTitle": "Разработка систем и безопасность инфраструктуры",
+    "engineeringDesc": "Фокус на проектировании отказоустойчивых и безопасных систем с использованием низкоуровневых возможностей Go, C/C++ и Rust. Проектирование архитектуры управления памятью и интеграция криптографических примитивов (ECC, ZKP)."
+  }
+}

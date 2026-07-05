@@ -1,243 +1,126 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion, type Variants } from "framer-motion";
 import {
-  Newspaper,
   Rss,
-  BookOpen,
-  Globe,
-  Tag,
-  Clock,
+  Newspaper,
+  MusicNotes,
+  FileText,
+  Microscope,
+  ArrowSquareOut,
 } from "@phosphor-icons/react";
 
 import styles from "@styles/Content/Content.module.scss";
 import { Footer } from "../../components/Footer";
+import { Divider } from "../../components/Divider";
 
-const posts = [
-  {
-    id: 1,
-    title: "OSINT Pipeline Breakdown",
-    desc: "How I structure OSINT workflows for DFIR cases.",
-    tag: "DFIR",
-    date: "2026-06-20",
-  },
-  {
-    id: 2,
-    title: "Reverse Engineering Notes",
-    desc: "Static analysis workflow for unknown binaries.",
-    tag: "RE",
-    date: "2026-06-18",
-  },
-];
+interface HubCardConfig {
+  id: string;
+  title: string;
+  desc: string;
+  href: string;
+  icon: React.ComponentType<any>;
+  countLabel?: string;
+}
 
-const writeups = [
+const hubSections: HubCardConfig[] = [
   {
-    id: 1,
-    title: "TryHackMe: PrivEsc path",
-    level: "Medium",
-    date: "2026-06-10",
+    id: "blog",
+    title: "Personal Blog & Notes",
+    desc: "Thoughts, active directory labs documentation, and CTF challenges writeups.",
+    href: "/blog",
+    icon: Newspaper,
   },
   {
-    id: 2,
-    title: "HTB: Linux foothold chain",
-    level: "Hard",
-    date: "2026-06-02",
-  },
-];
-
-const channels = [
-  {
-    id: 1,
-    name: "Security Notes",
-    url: "https://t.me/example",
-    desc: "DFIR / OSINT / Reverse Engineering",
+    id: "articles",
+    title: "Technical Articles",
+    desc: "Deep-dives, infrastructure tutorials and cyber security analytics.",
+    href: "/articles",
+    icon: FileText,
   },
   {
-    id: 2,
-    name: "Dev Log",
-    url: "https://github.com/example",
-    desc: "Projects & experiments",
-  },
-];
-
-const news = [
-  {
-    id: 1,
-    title: "New DFIR toolkit released",
-    source: "Community Feed",
-    date: "2026-06-21",
+    id: "research",
+    title: "Academic Research",
+    desc: "Threat intelligence models, vectors, memory optimization papers and mitigations.",
+    href: "/research",
+    icon: Microscope,
   },
   {
-    id: 2,
-    title: "CVE trend analysis 2026",
-    source: "CyberSec News",
-    date: "2026-06-19",
+    id: "lyrics",
+    title: "Lyrics Translations",
+    desc: "Artistic and context-precise translations with structural language annotations.",
+    href: "/lyrics",
+    icon: MusicNotes,
   },
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 24 },
+  visible: (custom: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.4 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: custom * 0.1 },
   }),
 };
 
 export const Content: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<
-    "posts" | "writeups" | "channels" | "news"
-  >("posts");
-
   return (
     <div className={styles.pageWrapper}>
-      <section className={styles.hero}>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          custom={0}
-          className={styles.heroHeader}
-        >
-          <div className={styles.titleRow}>
-            <Rss size={20} />
-            <h1>Content Hub</h1>
-          </div>
-          <p>Posts, writeups, channels and security research updates</p>
-        </motion.div>
+      <section className={styles.heroSection}>
+        <div className={styles.container}>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={0}
+            className={styles.headerArea}
+          >
+            <div className={styles.titleRow}>
+              <Rss size={32} weight="thin" />
+              <h1>Content Hub</h1>
+            </div>
+            <p>
+              Security research, standalone tech articles, notes, CTF writeups and lyrics translations.
+            </p>
+          </motion.div>
 
-        <div className={styles.tabs}>
-          {[
-            { key: "posts", label: "Posts", icon: Newspaper },
-            { key: "writeups", label: "Writeups", icon: BookOpen },
-            { key: "channels", label: "Channels", icon: Globe },
-            { key: "news", label: "News", icon: Tag },
-          ].map((tab) => {
-            const Icon = tab.icon;
-            return (
-              <button
-                key={tab.key}
-                className={`${styles.tabBtn} ${
-                  activeTab === tab.key ? styles.activeTab : ""
-                }`}
-                onClick={() => setActiveTab(tab.key as any)}
-              >
-                <Icon size={16} />
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+          <Divider />
 
-        <div className={styles.grid}>
-          <AnimatePresence mode="wait">
-            {activeTab === "posts" && (
-              <motion.div
-                key="posts"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={styles.section}
-              >
-                {posts.map((p, i) => (
-                  <motion.div
-                    key={p.id}
-                    className={styles.card}
-                    custom={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <div className={styles.cardTop}>
-                      <span className={styles.tag}>{p.tag}</span>
-                      <span className={styles.date}>
-                        <Clock size={14} /> {p.date}
-                      </span>
+          <motion.div layout className={styles.gridContainer}>
+            {hubSections.map((section, index) => {
+              const Icon = section.icon;
+              return (
+                <motion.div
+                  key={section.id}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-60px" }}
+                  custom={index + 1}
+                  className={styles.certCard}
+                >
+                  <div className={styles.cardInfo}>
+                    <div className={styles.metaTop}>
+                      <div className={styles.dateBadge}>
+                        <Icon size={14} />
+                        <span>Category</span>
+                      </div>
                     </div>
-                    <h3>{p.title}</h3>
-                    <p>{p.desc}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
 
-            {activeTab === "writeups" && (
-              <motion.div
-                key="writeups"
-                className={styles.section}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                {writeups.map((w, i) => (
-                  <motion.div
-                    key={w.id}
-                    className={styles.card}
-                    custom={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <div className={styles.cardTop}>
-                      <span className={styles.tag}>{w.level}</span>
-                      <span className={styles.date}>{w.date}</span>
+                    <h3 className={styles.certTitle}>{section.title}</h3>
+                    <p className={styles.descText}>{section.desc}</p>
+
+                    <div className={styles.cardFooter}>
+                      <Link to={section.href} className={styles.verifyBtn}>
+                        <span>Explore Directory</span>
+                        <ArrowSquareOut size={14} />
+                      </Link>
                     </div>
-                    <h3>{w.title}</h3>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-
-            {activeTab === "channels" && (
-              <motion.div
-                key="channels"
-                className={styles.section}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                {channels.map((c, i) => (
-                  <motion.a
-                    key={c.id}
-                    href={c.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.cardLink}
-                    custom={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <h3>{c.name}</h3>
-                    <p>{c.desc}</p>
-                  </motion.a>
-                ))}
-              </motion.div>
-            )}
-
-            {activeTab === "news" && (
-              <motion.div
-                key="news"
-                className={styles.section}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                {news.map((n, i) => (
-                  <motion.div
-                    key={n.id}
-                    className={styles.card}
-                    custom={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <div className={styles.cardTop}>
-                      <span className={styles.tag}>{n.source}</span>
-                      <span className={styles.date}>{n.date}</span>
-                    </div>
-                    <h3>{n.title}</h3>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </section>
 
