@@ -11,6 +11,8 @@ import hackthebox from "@assets/svg/hackthebox.svg";
 import reddit from "@assets/svg/reddit.svg";
 import instagram from "@assets/svg/instagram.svg";
 import vk from "@assets/svg/vk.svg";
+import dailydev from "@assets/svg/dailydev.svg";
+import peerlist from "@assets/svg/peerlist.svg";
 
 interface AddedSectionProps {
   variants: any;
@@ -95,15 +97,15 @@ export const AddedSection: React.FC<AddedSectionProps> = ({ variants, custom }) 
         <img src={telegram} alt="Telegram" />
       </a>
 
-      <a href="https://linkedin.com/in/itsventie" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+      <a href="https://linkedin.com/in/ventie" target="_blank" rel="noreferrer" aria-label="LinkedIn">
         <img src={linkedin} alt="LinkedIn" />
       </a>
 
-      <a href="https://www.tryhackme.com" target="_blank" rel="noreferrer" aria-label="TryHackMe">
+      <a href="https://www.tryhackme.com/p/ventie" target="_blank" rel="noreferrer" aria-label="TryHackMe">
         <img src={tryhackme} alt="TryHackMe" />
       </a>
 
-      <a href="https://www.hackthebox.com" target="_blank" rel="noreferrer" aria-label="HackTheBox">
+      <a href="hhttps://profile.hackthebox.com/profile/019c3742-352f-72cc-bd8c-981071553017" target="_blank" rel="noreferrer" aria-label="HackTheBox">
         <img src={hackthebox} alt="HackTheBox" />
       </a>
 
@@ -118,6 +120,14 @@ export const AddedSection: React.FC<AddedSectionProps> = ({ variants, custom }) 
       <a href="https://www.reddit.com/user/Vyntiq" target="_blank" rel="noreferrer" aria-label="Reddit">
         <img src={reddit} alt="Reddit" />
       </a>
+
+      <a href="https://daily.dev/ventie" target="_blank" rel="noreferrer" aria-label="Dailydev">
+        <img src={dailydev} alt="dailydev" />
+      </a>
+
+      <a href="https://peerlist.io/ventie" target="_blank" rel="noreferrer" aria-label="Peerlist">
+        <img src={peerlist} alt="Peerlist" />
+        </a>
     </div>
   );
 

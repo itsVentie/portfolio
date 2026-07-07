@@ -69,7 +69,215 @@ $transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 0 20px;
   }
 }
+.bigFiveSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
+.sectionLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bigFiveGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+.oceanFactor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.factorName {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.factorBar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.factorBar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 2px;
+}
+.goalsGrid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.goalsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  strong {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+}
+
+.goalItem {
+  position: relative;
+  padding-left: 18px;
+}
+
+.goalMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.goalName {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+.goalStatus {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+
+  &[data-type="active"] {
+    color: #a78bfa;
+  }
+}
+
+.goalDot {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+.cryptoDropdownWrapper {
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 14px;
+}
+
+.cryptoMainToggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.cryptoMainArrow {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.cryptoMainArrowOpen {
+  transform: rotate(180deg);
+}
+
+.cryptoSection {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeInCrypto 0.2s ease-out;
+}
+
+@keyframes fadeInCrypto {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.goalItem:has([data-type="active"]) .goalDot,
+.goalItem:has([data-type="progress"]) .goalDot {
+  background: #8b5cf6;
+}
+.strategicTraits {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.traitRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 8px;
+}
+
+.traitRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.traitName {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.traitValue {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
 .heroSection {
   padding: 140px 0 80px;
 

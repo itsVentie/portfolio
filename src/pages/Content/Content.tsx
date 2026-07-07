@@ -46,10 +46,10 @@ const hubSections: HubCardConfig[] = [
     icon: Microscope,
   },
   {
-    id: "lyrics",
-    title: "Lyrics Translations",
-    desc: "Artistic and context-precise translations with structural language annotations.",
-    href: "/lyrics",
+    id: "writeups",
+    title: "Writeups",
+    desc: "In-depth writeups of Capture The Flag challenges and solutions.",
+    href: "/writeups",
     icon: MusicNotes,
   },
 ];
@@ -80,7 +80,7 @@ export const Content: React.FC = () => {
               <h1>Content Hub</h1>
             </div>
             <p>
-              Security research, standalone tech articles, notes, CTF writeups and lyrics translations.
+              Security research, standalone tech articles, notes, CTF writeups.
             </p>
           </motion.div>
 

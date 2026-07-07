@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import {
   Terminal,
   CaretDown,
-  ShieldCheck,
-  MagnifyingGlass,
-  PaperPlaneTilt,
   X,
   Image as ImageIcon,
   FilmStrip,
@@ -24,7 +21,7 @@ import { useAvatarManager } from "../components/avatars/useAvatarManager";
 import { photosData, gifsData } from "../components/avatars/avatars.config";
 
 export const Home: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isAkaOpen, setIsAkaOpen] = useState(false);
   const [activeTabFocus, setActiveTabFocus] = useState<"engineering" | "forensics">("engineering");
   const [formData, setFormData] = useState({
@@ -42,6 +39,13 @@ export const Home: React.FC = () => {
     closeModal,
     selectAvatar,
   } = useAvatarManager();
+
+  useEffect(() => {
+    const savedLng = localStorage.getItem("i18nextLng");
+    if (savedLng && savedLng !== i18n.language) {
+      i18n.changeLanguage(savedLng);
+    }
+  }, [i18n]);
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -86,6 +90,12 @@ export const Home: React.FC = () => {
   };
 
   const currentGridItems = activeTab === "photos" ? photosData : gifsData;
+  
+  const toggleLanguage = () => {
+    const nextLng = i18n.language.startsWith("en") ? "ru" : "en";
+    i18n.changeLanguage(nextLng);
+    localStorage.setItem("i18nextLng", nextLng);
+  };
 
   return (
     <div className={styles.pageWrapper}>
@@ -146,9 +156,13 @@ export const Home: React.FC = () => {
                     )}
                   </div>
 
-                  <div className={styles.locationBadge}>
+                  <div 
+                    className={styles.locationBadge} 
+                    onClick={toggleLanguage} 
+                    style={{ cursor: "pointer" }}
+                  >
                     <FR title="France" className={styles.flagIcon} />
-                    <span>France</span>
+                    <span>France ({i18n.language.toUpperCase()})</span>
                   </div>
                 </div>
 
@@ -170,7 +184,7 @@ export const Home: React.FC = () => {
             custom={3}
             className={styles.expertFocusSection}
           >
-            <div className={styles.focusContainer}>
+            <div className={styles.Container}>
               <div className={styles.focusTabs}>
                 <button
                   className={`${styles.focusTabBtn} ${activeTabFocus === "engineering" ? styles.focusTabBtnActive : ""}`}
@@ -234,17 +248,14 @@ export const Home: React.FC = () => {
             <div className={styles.sideMetrics}>
               <div className={styles.metricItemCard}>
                 <div className={styles.metricHeader}>
-                  <ShieldCheck size={20} weight="thin" />
                   <span>{t("metrics.statusTitle")}</span>
                 </div>
                 <div className={styles.metricBody}>
-                  <span className={styles.statusDotActive}></span>
                   <h4>{t("metrics.statusBody")}</h4>
                 </div>
               </div>
               <div className={styles.metricItemCard}>
                 <div className={styles.metricHeader}>
-                  <MagnifyingGlass size={20} weight="thin" />
                   <span>{t("metrics.focusTitle")}</span>
                 </div>
                 <div className={styles.metricBody}>
@@ -325,7 +336,6 @@ export const Home: React.FC = () => {
 
               <button type="submit" className={styles.submitBtn}>
                 <span>{t("contact.submit")}</span>
-                <PaperPlaneTilt size={16} weight="thin" />
               </button>
             </form>
           </motion.div>

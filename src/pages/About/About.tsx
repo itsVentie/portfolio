@@ -8,6 +8,7 @@ import {
   FilmStrip,
   Brain,
   Code,
+  BookOpen,
   Translate,
   GameController,
   Desktop,
@@ -23,6 +24,7 @@ import { useAvatarManager } from "../../components/avatars/useAvatarManager";
 import { photosData, gifsData } from "../../components/avatars/avatars.config";
 
 export const About: React.FC = () => {
+  const [isCryptoOpen, setIsCryptoOpen] = useState(false);
   const [isAkaOpen, setIsAkaOpen] = useState(false);
  const CryptoItem: React.FC<{ label: string; address: string }> = ({
   label,
@@ -231,7 +233,7 @@ export const About: React.FC = () => {
     </div>
   </div>
 
-           <div className={styles.bentoCard}>
+          <div className={styles.bentoCard}>
   <div className={styles.cardHeader}>
     <Brain size={18} weight="regular" />
     <span className={styles.cardTitle}>Psychological Profile</span>
@@ -270,6 +272,32 @@ export const About: React.FC = () => {
     </div>
   </div>
 
+  <div className={styles.bigFiveSection}>
+    <span className={styles.sectionLabel}>Big Five (OCEAN)</span>
+    <div className={styles.bigFiveGrid}>
+      <div className={styles.oceanFactor}>
+        <span className={styles.factorName}>O</span>
+        <div className={styles.factorBar} style={{ '--progress': '88%' } as React.CSSProperties} />
+      </div>
+      <div className={styles.oceanFactor}>
+        <span className={styles.factorName}>C</span>
+        <div className={styles.factorBar} style={{ '--progress': '70%' } as React.CSSProperties} />
+      </div>
+      <div className={styles.oceanFactor}>
+        <span className={styles.factorName}>E</span>
+        <div className={styles.factorBar} style={{ '--progress': '20%' } as React.CSSProperties} />
+      </div>
+      <div className={styles.oceanFactor}>
+        <span className={styles.factorName}>A</span>
+        <div className={styles.factorBar} style={{ '--progress': '45%' } as React.CSSProperties} />
+      </div>
+      <div className={styles.oceanFactor}>
+        <span className={styles.factorName}>N</span>
+        <div className={styles.factorBar} style={{ '--progress': '75%' } as React.CSSProperties} />
+      </div>
+    </div>
+  </div>
+
   <div className={styles.strategicTraits}>
     <div className={styles.traitRow}>
       <span className={styles.traitName}>Analytical Focus</span>
@@ -277,7 +305,15 @@ export const About: React.FC = () => {
     </div>
     <div className={styles.traitRow}>
       <span className={styles.traitName}>Strategic Vision</span>
-      <span className={styles.traitValue}>Chess 2300+ Elo</span>
+      <span className={styles.traitValue}>Predictive Analysis & Research</span>
+    </div>
+    <div className={styles.traitRow}>
+      <span className={styles.traitName}>DISC Profile</span>
+      <span className={styles.traitValue}>C/D (Analyst)</span>
+    </div>
+    <div className={styles.traitRow}>
+      <span className={styles.traitName}>Moral Alignment</span>
+      <span className={styles.traitValue}>True Neutral</span>
     </div>
   </div>
 
@@ -290,20 +326,80 @@ export const About: React.FC = () => {
                 <span className={styles.cardTitle}>Development Stack</span>
               </div>
               <div className={styles.stackList}>
-                <div className={styles.stackItem}>
-                  <strong>Low-Level:</strong> Go, C++, C, Rust, C#
-                </div>
-                <div className={styles.stackItem}>
-                  <strong>Web & Cloud:</strong> React, Next.js, AWS, Docker
-                </div>
-                <div className={styles.stackItem}>
-                  <strong>Environment:</strong> RHEL, Arch, Tor, VeraCrypt
-                </div>
+               <div className={styles.stackItem}>
+  <strong>Programming Languages:</strong> Go, C++, C, Rust, Python
+</div>
+
+<div className={styles.stackItem}>
+  <strong>Frameworks:</strong> Wails, Tauri, React, Next.js, Gin, Axum, Actix Web, eframe
+</div>
+
+<div className={styles.stackItem}>
+  <strong>DevSecOps & Tools:</strong> Docker, Docker Compose, Kubernetes, Git, GitHub Actions, Ansible
+</div>
               </div>
               <div className={styles.skillIcons}>
                 <img src="https://skillicons.dev/icons?i=go,cpp,rust,react,docker,linux&theme=dark" alt="Skills" />
               </div>
             </div>
+
+            <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
+  <div className={styles.cardHeader}>
+    <BookOpen size={18} weight="regular" />
+    <span className={styles.cardTitle}>Milestones & Goals</span>
+  </div>
+  <div className={styles.goalsGrid}>
+    <div className={styles.goalsColumn}>
+      <strong>Academy & Career</strong>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Obtain a Master's degree in CyberSecurity</span>
+          <span className={styles.goalStatus} data-type="progress">In Progress</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Get an internship or job in government structures (IB / Forensics)</span>
+          <span className={styles.goalStatus} data-type="planned">Planned</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Publish a research paper in a specialized journal</span>
+          <span className={styles.goalStatus} data-type="planned">Planned</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+    </div>
+
+    <div className={styles.goalsColumn}>
+      <strong>Personal & Skills</strong>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Raise French proficiency to a fluent C1 level.</span>
+          <span className={styles.goalStatus} data-type="progress">In progress</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Achieve a master rating in Shogi and Go</span>
+          <span className={styles.goalStatus} data-type="progress">In progress</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+      <div className={styles.goalItem}>
+        <div className={styles.goalMeta}>
+          <span className={styles.goalName}>Launch and develop all the projects</span>
+          <span className={styles.goalStatus} data-type="active"> In progress</span>
+        </div>
+        <span className={styles.goalDot} />
+      </div>
+    </div>
+  </div>
+</div>
 
    <div className={styles.bentoCard}>
   <div className={styles.cardHeader}>
@@ -416,7 +512,7 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <div className={styles.bentoCard}>
+<div className={styles.bentoCard}>
   <div className={styles.cardHeader}>
     <Globe size={18} weight="regular" />
     <span className={styles.cardTitle}>Contact & Infrastructure</span>
@@ -434,37 +530,46 @@ export const About: React.FC = () => {
       <span>Phone:</span>
       <a href="tel:+33756915757" className={styles.value}>+33 7 56 91 57 57</a>
     </div>
-    <div className={styles.cryptoSection}>
-  <CryptoItem
-    label="Cardano (ADA)"
-    address="addr1qyu03p6enhnf0p38m9qxr4gncczcs09teev4j06sdm872cfclzr4n80xj7rz0k2qv82383s93q72hnjetyl4qmk0u4ssv5se46"
-  />
 
-  <CryptoItem
-    label="Bitcoin (BTC)"
-    address="bc1qxdfhlt5fq0jdz4dv562kchzl5tu56x4t0g26hh"
-  />
+    <div className={styles.cryptoDropdownWrapper}>
+      <button
+        type="button"
+        className={styles.cryptoMainToggle}
+        onClick={() => setIsCryptoOpen(!isCryptoOpen)}
+      >
+        <span>Cryptocurrency Addresses</span>
+        <span className={`${styles.cryptoMainArrow} ${isCryptoOpen ? styles.cryptoMainArrowOpen : ""}`}>▼</span>
+      </button>
 
-  <CryptoItem
-    label="Ethereum (ETH)"
-    address="0x2b19c13CcE3cB291325dD5FBB1eC4a1c44A494bA"
-  />
-
-  <CryptoItem
-    label="Litecoin (LTC)"
-    address="LdPWmxBe6wFzvsc5qZ2F3ba2cfTHThdAuX"
-  />
-
-  <CryptoItem
-    label="XRP"
-    address="rB6Rtm9k1ZbuoPWNvGMzeW7CZNyiPFgNZc"
-  />
-
-  <CryptoItem
-    label="TONCOIN"
-    address="UQCMD8SCpTLqUlvWIQXYm3GCXmd1cXU7UdZYjzl6zhifL8eO"
-  />
-</div>
+      {isCryptoOpen && (
+        <div className={styles.cryptoSection}>
+          <CryptoItem
+            label="Cardano (ADA)"
+            address="addr1qyu03p6enhnf0p38m9qxr4gncczcs09teev4j06sdm872cfclzr4n80xj7rz0k2qv82383s93q72hnjetyl4qmk0u4ssv5se46"
+          />
+          <CryptoItem
+            label="Bitcoin (BTC)"
+            address="bc1qxdfhlt5fq0jdz4dv562kchzl5tu56x4t0g26hh"
+          />
+          <CryptoItem
+            label="Ethereum (ETH)"
+            address="0x2b19c13CcE3cB291325dD5FBB1eC4a1c44A494bA"
+          />
+          <CryptoItem
+            label="Litecoin (LTC)"
+            address="LdPWmxBe6wFzvsc5qZ2F3ba2cfTHThdAuX"
+          />
+          <CryptoItem
+            label="XRP"
+            address="rB6Rtm9k1ZbuoPWNvGMzeW7CZNyiPFgNZc"
+          />
+          <CryptoItem
+            label="TONCOIN"
+            address="UQCMD8SCpTLqUlvWIQXYm3GCXmd1cXU7UdZYjzl6zhifL8eO"
+          />
+        </div>
+      )}
+    </div>
   </div>
 </div>
           </motion.div>

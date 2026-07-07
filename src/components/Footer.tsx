@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "@styles/Footer.module.scss";
 import logoImg from "@assets/logo.png";
 import github from "@assets/svg/github.svg";
@@ -67,11 +68,11 @@ export const Footer: React.FC = () => {
         <div className={styles.footerCol}>
           <h4>Navigation</h4>
           <nav aria-label="Secondary site navigation">
-            <a href="/">Home</a>
-            <a href="/about">Projects</a>
-            <a href="/projects">Lyrics</a>
-            <a href="/download">Downloads</a>
-            <a href="/system">Details</a>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/download">Downloads</Link>
+            <Link to="/system">Details</Link>
           </nav>
         </div>
 
